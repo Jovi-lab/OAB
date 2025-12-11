@@ -14,6 +14,7 @@
       <a href="#" class="nav-item" data-route="estudos">Estudos</a>
       <a href="#" class="nav-item" data-route="teste">Simulado</a>
       <a href="#" class="nav-item" data-route="descanso">Descanso</a>
+      <a href="#" class="nav-item" data-route="filmes">Filmes</a>
       <div class="grow"></div>
       <div class="user">
         <input id="playerName" type="text" placeholder="Seu nome..."/>
@@ -24,7 +25,7 @@
   </header>
 
   <main id="app">
-    <!-- Home -->
+        <!-- Home -->
     <section id="homeView">
       <div class="hero">
         <h1>Bem-vindo, <span id="greetName">concurseiro</span>!</h1>
@@ -32,46 +33,27 @@
       </div>
       <h2 class="row-title">Acesse rapidamente</h2>
       <div class="grid cols-4">
-        <div class="card">
-          <h3>Estudos</h3>
-          <p>Textos objetivos com fontes e imagens.</p>
-          <div class="actions"><button class="btn btn-primary" data-route="estudos">Abrir</button></div>
-        </div>
-        <div class="card">
-          <h3>Simulado</h3>
-          <p>20 questões com gabarito detalhado.</p>
-          <div class="actions"><button class="btn btn-primary" data-route="teste">Abrir</button></div>
-        </div>
-        <div class="card">
-          <h3>Descanso</h3>
-          <p>Palavras cruzadas e jogo da forca.</p>
-          <div class="actions"><button class="btn btn-primary" data-route="descanso">Abrir</button></div>
-        </div>
-        <div class="card">
-          <h3>Exportar gabarito</h3>
-          <p>Baixe seu resumo em Markdown.</p>
-          <div class="actions"><button class="btn btn-secondary" data-route="teste">Ir ao simulado</button></div>
-        </div>
+        <div class="card"><h3>Estudos</h3><p>Textos objetivos com fontes e imagens.</p><div class="actions"><button class="btn btn-primary" data-route="estudos">Abrir</button></div></div>
+        <div class="card"><h3>Simulado</h3><p>20 questões com gabarito detalhado.</p><div class="actions"><button class="btn btn-primary" data-route="teste">Abrir</button></div></div>
+        <div class="card"><h3>Descanso</h3><p>Palavras cruzadas e jogo da forca.</p><div class="actions"><button class="btn btn-primary" data-route="descanso">Abrir</button></div></div>
+        <div class="card"><h3>Filmes</h3><p>Top 5 sobre direito e justiça.</p><div class="actions"><button class="btn btn-primary" data-route="filmes">Abrir</button></div></div>
       </div>
     </section>
-
-    <!-- Estudos -->
+        <!-- Estudos -->
     <section id="estudosView" class="hidden">
       <div class="hero">
         <h1>Estudos</h1>
-        <p>Conteúdos desenvolvidos com exemplos e links oficiais.</p>
+        <p>Conteúdos desenvolvidos com exemplos, textos ampliados e links oficiais.</p>
       </div>
       <div id="studyGrid" class="grid cols-2"></div>
       <div id="studyContent" class="content hidden"></div>
     </section>
-
-    <!-- Simulado -->
+        <!-- Simulado -->
     <section id="testeView" class="hidden">
       <div class="hero">
         <h1>Simulado</h1>
         <p>Responda 20 questões. No final, veja um gabarito completo.</p>
       </div>
-
       <div class="content">
         <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
           <span class="pill pill-area">Questão <span id="qIndex">1</span> de <span id="qTotal">20</span></span>
@@ -80,9 +62,7 @@
             <div id="progressBar" class="bar"></div>
           </div>
         </div>
-
         <div id="quizCase" class="quiz-case"></div>
-
         <div class="footer">
           <div style="display:flex;gap:8px;flex-wrap:wrap">
             <button class="btn btn-secondary" id="btnPrev">Anterior</button>
@@ -96,7 +76,6 @@
           </div>
         </div>
       </div>
-
       <div id="resultCard" class="content hidden">
         <h2>Resultado</h2>
         <p><strong>Nome:</strong> <span id="finalName">concurseiro</span></p>
@@ -105,8 +84,7 @@
         <div id="answersList"></div>
       </div>
     </section>
-
-    <!-- Descanso -->
+        <!-- Descanso -->
     <section id="descansoView" class="hidden">
       <div class="hero">
         <h1>Descanso</h1>
@@ -162,6 +140,22 @@
             <button class="btn btn-secondary" id="btnHangReset">Nova rodada</button>
           </div>
         </div>
+      </div>
+    </section>
+        <!-- Filmes -->
+    <section id="filmesView" class="hidden">
+      <div class="hero">
+        <h1>Filmes sobre Direito e Justiça</h1>
+        <p>Top 5 recomendações para refletir sobre ética e justiça.</p>
+      </div>
+      <div class="content">
+        <ol>
+          <li>A Espera de um Milagre (1999)</li>
+          <li>Milagre na Cela 7 (2019)</li>
+          <li>Doze Homens e uma Sentença (1957)</li>
+          <li>Philadelphia (1993)</li>
+          <li>Erin Brockovich (2000)</li>
+        </ol>
       </div>
     </section>
   </main>
