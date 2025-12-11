@@ -431,10 +431,10 @@ function playHangman(letter,btn){
   if(!ok){hangmanState.errors++; updateFigure();}
   hangmanWord.textContent=hangmanState.progress.join(" ");
   if(hangmanState.progress.join("")===hangmanState.word){
-    hangmanFigure.textContent="🎉 Você libertou o boneco!"; hangmanLetters.innerHTML="";
+    hangmanFigure.textContent="🚔 UFA! ELE Morreu... Mas foi pro Céu! :)"; hangmanLetters.innerHTML="";
   }
   if(hangmanState.errors>=hangmanState.maxErrors){
-    hangmanFigure.textContent="🚔 UFA! ELE Morreu... Mas foi pro Céu! :) "; hangmanLetters.innerHTML="";
+    hangmanFigure.textContent="...Fim de jogo: o boneco morreu! :( "; hangmanLetters.innerHTML="";
   }
 }
 
