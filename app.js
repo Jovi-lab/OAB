@@ -441,11 +441,11 @@ function playHangman(letter,btn){
 function updateFigure(){
   const e=hangmanState.errors;
   if(e===1) hangmanFigure.textContent="Ixi, o policial pegou a algema!";
-  if(e===2) hangmanFigure.textContent="Opa, ainda bem que você acertou a letra, o policial já estava colocando droga no carro!";
-  if(e===3) hangmanFigure.textContent="Meu DEUS DO CÉU, ELE SAIU CORRENDO E LEVOU UM TIRO!";
-  if(e===4) hangmanFigure.textContent="🚨 O boneco está quase preso!";
-  if(e===5) hangmanFigure.textContent="🚔 O boneco foi algemado e colocado no carro!";
-  if(e===6) hangmanFigure.textContent="Fim de jogo: o boneco está preso.";
+  if(e===2) hangmanFigure.textContent="Opa, Ou você acerta alguma coisa ai ou vai dar ruim, o policial já está colocando droga no carro!";
+  if(e===3) hangmanFigure.textContent="Meu DEUS DO CÉU, ELE SAIU CORRENDO!";
+  if(e===4) hangmanFigure.textContent="🚨 O POLICIAL SACOU O REVOLVER!";
+  if(e===5) hangmanFigure.textContent="🚔 MEU JESUS, O POLICIAL ATIROU!...";
+  if(e===6) hangmanFigure.textContent="...Fim de jogo: o boneco morreu! :( ";
 }
 
 // ====== inicialização descanso ======
@@ -466,3 +466,16 @@ btnHangReset.addEventListener("click",()=>initHangman());
 
 // start on home
 routeTo("home");
+function routeTo(r) {
+  state.route = r;
+  $$(".nav-item").forEach(a => a.classList.toggle("active", a.getAttribute("data-route") === r));
+  $("#homeView").classList.toggle("hidden", r !== "home");
+  $("#estudosView").classList.toggle("hidden", r !== "estudos");
+  $("#testeView").classList.toggle("hidden", r !== "teste");
+  $("#descansoView").classList.toggle("hidden", r !== "descanso");
+  $("#filmesView").classList.toggle("hidden", r !== "filmes");
+  $("#academiaView").classList.toggle("hidden", r !== "academia"); // <-- nova aba
+  if (r === "estudos") renderStudies();
+  if (r === "teste") initQuiz();
+  if (r === "descanso") initDescanso();
+}
