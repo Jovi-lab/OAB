@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Universo OAB — Modo Netflix</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="logo">🎬 Universo OAB</div>
+      <a href="#" class="nav-item active" data-route="home">Início</a>
+      <a href="#" class="nav-item" data-route="estudos">Estudos</a>
+      <a href="#" class="nav-item" data-route="teste">Simulado</a>
+      <a href="#" class="nav-item" data-route="descanso">Descanso</a>
+      <div class="grow"></div>
+      <div class="user">
+        <input id="playerName" type="text" placeholder="Seu nome..."/>
+        <button class="btn btn-secondary" id="btnClear">Limpa</button>
+        <button class="btn btn-primary" id="btnGo">Entrar</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="app">
+    <!-- Home -->
+    <section id="homeView">
+      <div class="hero">
+        <h1>Bem-vindo, <span id="greetName">concurseiro</span>!</h1>
+        <p>Explore conteúdos, faça um simulado e relaxe nos jogos jurídicos.</p>
+      </div>
+      <h2 class="row-title">Acesse rapidamente</h2>
+      <div class="grid cols-4">
+        <div class="card">
+          <h3>Estudos</h3>
+          <p>Textos objetivos com fontes e imagens.</p>
+          <div class="actions"><button class="btn btn-primary" data-route="estudos">Abrir</button></div>
+        </div>
+        <div class="card">
+          <h3>Simulado</h3>
+          <p>20 questões com gabarito detalhado.</p>
+          <div class="actions"><button class="btn btn-primary" data-route="teste">Abrir</button></div>
+        </div>
+        <div class="card">
+          <h3>Descanso</h3>
+          <p>Palavras cruzadas e jogo da forca.</p>
+          <div class="actions"><button class="btn btn-primary" data-route="descanso">Abrir</button></div>
+        </div>
+        <div class="card">
+          <h3>Exportar gabarito</h3>
+          <p>Baixe seu resumo em Markdown.</p>
+          <div class="actions"><button class="btn btn-secondary" data-route="teste">Ir ao simulado</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Estudos -->
+    <section id="estudosView" class="hidden">
+      <div class="hero">
+        <h1>Estudos</h1>
+        <p>Conteúdos desenvolvidos com exemplos e links oficiais.</p>
+      </div>
+      <div id="studyGrid" class="grid cols-2"></div>
+      <div id="studyContent" class="content hidden"></div>
+    </section>
+
+    <!-- Simulado -->
+    <section id="testeView" class="hidden">
+      <div class="hero">
+        <h1>Simulado</h1>
+        <p>Responda 20 questões. No final, veja um gabarito completo.</p>
+      </div>
+
+      <div class="content">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <span class="pill pill-area">Questão <span id="qIndex">1</span> de <span id="qTotal">20</span></span>
+          <span class="pill pill-area">Pontuação: <span id="score">0</span></span>
+          <div class="progress" style="flex:1;min-width:220px;">
+            <div id="progressBar" class="bar"></div>
+          </div>
+        </div>
+
+        <div id="quizCase" class="quiz-case"></div>
+
+        <div class="footer">
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn btn-secondary" id="btnPrev">Anterior</button>
+            <button class="btn btn-secondary" id="btnNext">Próxima</button>
+            <button class="btn btn-primary" id="btnCheck">Conferir</button>
+            <button class="btn btn-primary hidden" id="btnFinish">Finalizar</button>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn btn-secondary" id="btnReplay">Reiniciar</button>
+            <button class="btn btn-secondary" id="btnExportMD">Exportar gabarito (MD)</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="resultCard" class="content hidden">
+        <h2>Resultado</h2>
+        <p><strong>Nome:</strong> <span id="finalName">concurseiro</span></p>
+        <p><strong>Pontuação:</strong> <span id="finalScore">0</span>/<span id="finalTotal">20</span></p>
+        <h3>Gabarito detalhado</h3>
+        <div id="answersList"></div>
+      </div>
+    </section>
+
+    <!-- Descanso -->
+    <section id="descansoView" class="hidden">
+      <div class="hero">
+        <h1>Descanso</h1>
+        <p>Escolha como relaxar e aprender.</p>
+      </div>
+
+      <div class="grid cols-2">
+        <div class="card">
+          <h3>Palavras Cruzadas</h3>
+          <p>Complete com termos jurídicos.</p>
+          <div class="actions">
+            <button class="btn btn-primary" id="btnCrossStart">Abrir</button>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Jogo da Forca</h3>
+          <p>Responda perguntas e liberte o boneco.</p>
+          <div class="actions">
+            <button class="btn btn-primary" id="btnHangStart">Abrir</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Palavras cruzadas -->
+      <div id="crosswordGame" class="hidden">
+        <div class="content">
+          <h2>Palavras Cruzadas</h2>
+          <div class="crossword-wrap">
+            <div class="clues">
+              <h3>Dicas</h3>
+              <ol id="clueList"></ol>
+              <div style="display:flex;gap:8px;margin-top:10px;">
+                <button class="btn btn-secondary" id="btnClearCross">Limpar</button>
+                <button class="btn btn-primary" id="btnCheckCross">Conferir</button>
+              </div>
+              <div id="crossWin" class="win">Parabéns! Tudo correto.</div>
+            </div>
+            <div id="crossGrid" class="crossword"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Forca -->
+      <div id="hangmanGame" class="hidden">
+        <div class="content">
+          <h2>Jogo da Forca</h2>
+          <p class="muted">Cada erro aproxima o boneco das algemas e do carro.</p>
+          <div id="hangmanFigure" class="hangman-figure">Algemas: [ ]  Boneco: ( )  Carro: [ ]</div>
+          <div id="hangmanWord" class="hangman-word">_ _ _</div>
+          <div id="hangmanStatus" class="hangman-status">Pergunta…</div>
+          <div id="hangmanLetters" class="hangman-letters"></div>
+          <div style="margin-top:10px;">
+            <button class="btn btn-secondary" id="btnHangReset">Nova rodada</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
