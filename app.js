@@ -434,7 +434,7 @@ function playHangman(letter,btn){
     hangmanFigure.textContent="🎉 Você libertou o boneco!"; hangmanLetters.innerHTML="";
   }
   if(hangmanState.errors>=hangmanState.maxErrors){
-    hangmanFigure.textContent="🚔 O boneco foi preso no carro!"; hangmanLetters.innerHTML="";
+    hangmanFigure.textContent="🚔 UFA! ELE Morreu... Mas foi pro Céu! :) "; hangmanLetters.innerHTML="";
   }
 }
 
@@ -442,9 +442,9 @@ function updateFigure(){
   const e=hangmanState.errors;
   if(e===1) hangmanFigure.textContent="Ixi, o policial pegou a algema!";
   if(e===2) hangmanFigure.textContent="Opa, Ou você acerta alguma coisa ai ou vai dar ruim, o policial já está colocando droga no carro!";
-  if(e===3) hangmanFigure.textContent="Meu DEUS DO CÉU, ELE SAIU CORRENDO!";
-  if(e===4) hangmanFigure.textContent="🚨 O POLICIAL SACOU O REVOLVER!";
-  if(e===5) hangmanFigure.textContent="🚔 MEU JESUS, O POLICIAL ATIROU!...";
+  if(e===3) hangmanFigure.textContent="Meu DEUS DO CÉU, O MELIANTE FALOU PARA O POLICIAL OLHAR PRO LADO E SAIU CORRENDO!";
+  if(e===4) hangmanFigure.textContent="🚨 O POLICIAL SACOU O REVOLVER! :|";
+  if(e===5) hangmanFigure.textContent="🚔 MEU JESUS, O POLICIAL ATIROU! PETECO! PETECO! PETECO!";
   if(e===6) hangmanFigure.textContent="...Fim de jogo: o boneco morreu! :( ";
 }
 
